@@ -1,0 +1,22 @@
+# Repository Checklist
+
+- [x] Root README
+- [x] `.gitignore`
+- [x] Project blueprint
+- [x] Complete technical project report
+- [x] Setup/run documentation
+- [x] Testing checklist
+- [x] Viva Q&A
+- [x] Security notes
+- [x] Contribution guide
+- [x] Changelog
+- [x] Screenshot plan
+- [x] GitHub upload guide
+- [x] `.env.template`
+- [x] `package.json`
+- [x] Removed `node_modules`
+- [x] Removed Python `.venv`
+- [x] Removed editor-specific `.vscode`
+- [ ] Add real project screenshots if desired
+- [ ] Review public contact details
+- [ ] Choose an open-source license if desired
