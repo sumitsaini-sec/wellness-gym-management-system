@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members List | Wellness Gym</title>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('wellness_gym_theme') || 'dark');</script>
+    <script src="js/auth.js"></script>
+    <script>requireAdmin();</script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">WELLNESS GYM</a>
+            <div class="nav-right">
+                <button class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme"><span class="theme-icon theme-icon-sun">☀️</span><span class="theme-icon theme-icon-moon">🌙</span></button>
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="diet-plans.html">Diet Plans</a></li>
+                <li><a href="supplement-store.html">Supplements</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="register.html">Register Member</a></li>
+                <li><a href="members.html" class="active">Members</a></li>
+                <li><a href="#" onclick="logout(); return false;">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero"><div class="container"><h1>Members List</h1><p>Registered members — view and manage</p></div></section>
+        <section class="members-content">
+            <div class="container">
+                <p class="members-intro">Manage daily attendance, assign fee packages, and create member bills with printable receipts. Data is stored in your browser (localStorage).</p>
+                <div class="members-admin-stats reveal">
+                    <article class="members-stat-card"><h3>Total Members</h3><p id="totalMembersCount">0</p></article>
+                    <article class="members-stat-card"><h3>Present Today</h3><p id="presentTodayCount">0</p></article>
+                    <article class="members-stat-card"><h3>Total Collected</h3><p id="totalCollectedAmount">Rs 0.00</p></article>
+                </div>
+                <div class="members-table-wrap">
+                    <table class="members-table">
+                        <thead><tr><th>#</th><th>Name</th><th>Username</th><th>Contact</th><th>Package</th><th>Attendance</th><th>Billing</th><th>Registered on</th><th>Actions</th></tr></thead>
+                        <tbody id="membersTableBody"></tbody>
+                    </table>
+                </div>
+                <p id="membersEmpty" class="members-empty" style="display: none;">No members yet. <a href="register.html">Register Member</a> to add the first member.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><div class="container footer-content"><p>&copy; 2025 Wellness Gym. All rights reserved.</p></div></footer>
+    <script src="js/script.js"></script>
+    <script src="js/members-admin.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
