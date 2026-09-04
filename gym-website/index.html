@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Gym | Transform Your Body</title>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('wellness_gym_theme') || 'dark');</script>
+    <script src="js/auth.js"></script>
+    <script>requireAuth();</script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">WELLNESS GYM</a>
+            <div class="nav-right">
+                <button class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme"><span class="theme-icon theme-icon-sun">☀️</span><span class="theme-icon theme-icon-moon">🌙</span></button>
+                <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="diet-plans.html">Diet Plans</a></li>
+                <li><a href="supplement-store.html">Supplements</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="register.html" id="navRegister" style="display:none;">Register Member</a></li>
+                <li><a href="members.html" id="navMembers" style="display:none;">Members</a></li>
+                <li><a href="#" onclick="logout(); return false;">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="home-revamp-v2">
+        <section class="home-v2-hero">
+            <div class="container home-v2-grid">
+                <div class="home-v2-copy reveal reveal-up">
+                    <p class="home-v2-kicker">Elite Transformation Studio</p>
+                    <h1>Forge Muscle. Burn Limits. Own The Mirror.</h1>
+                    <p>Train in a results-first environment with pro coaches, world-class equipment, and plans designed for visible transformation.</p>
+                    <div class="home-v2-cta">
+                        <a href="contact.html" class="btn btn-primary">Start Your Trial</a>
+                        <a href="activity.html" class="btn btn-outline">View Programs</a>
+                    </div>
+                    <div class="home-v2-metrics">
+                        <div><strong class="stat-number" data-target="5000">0</strong><span>Members</span></div>
+                        <div><strong class="stat-number" data-target="50">0</strong><span>Expert Trainers</span></div>
+                        <div><strong class="stat-number" data-target="24">0</strong><span>Open Access /7</span></div>
+                    </div>
+                </div>
+
+                <div class="home-v2-media reveal reveal-right">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1000&q=80" alt="Bodybuilder flexing body in gym" loading="eager">
+                    <div class="home-v2-slogan">NO EXCUSES. ONLY PROGRESS.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-v2-strip" aria-label="Gym highlights">
+            <div class="home-v2-strip-track">
+                <span>Strength Training</span><span>Fat Loss</span><span>Muscle Gain</span><span>HIIT</span><span>Personal Coaching</span><span>Nutrition Support</span><span>Body Recomposition</span>
+                <span>Strength Training</span><span>Fat Loss</span><span>Muscle Gain</span><span>HIIT</span><span>Personal Coaching</span><span>Nutrition Support</span><span>Body Recomposition</span>
+            </div>
+        </section>
+
+        <section class="home-v2-programs">
+            <div class="container">
+                <div class="home-v2-heading reveal reveal-up"><p>Training Focus</p><h2>Programs Built For Real Change</h2></div>
+                <div class="home-v2-cards">
+                    <article class="home-v2-card reveal reveal-up">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80" alt="Heavy weight training area" loading="lazy">
+                        <div><h3>Strength & Hypertrophy</h3><p>Progressive overload plans to grow muscle and build power with measurable weekly tracking.</p></div>
+                    </article>
+                    <article class="home-v2-card reveal reveal-up" style="transition-delay:0.1s;">
+                        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=900&q=80" alt="Athlete doing intense conditioning workout" loading="lazy">
+                        <div><h3>Conditioning & Cut</h3><p>High-intensity circuits and cardio protocols that improve endurance while shredding body fat.</p></div>
+                    </article>
+                    <article class="home-v2-card reveal reveal-up" style="transition-delay:0.2s;">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80" alt="Trainer helping member with form" loading="lazy">
+                        <div><h3>Coach-Led Transformation</h3><p>One-on-one coaching, form correction, nutrition guidance, and accountability to stay consistent.</p></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-v2-cta-band reveal reveal-up">
+            <div class="container home-v2-cta-inner"><h2>Your Strongest Version Starts This Week</h2><a href="contact.html" class="btn btn-primary">Book Free Assessment</a></div>
+        </section>
+    </main>
+
+    <footer class="footer"><div class="container footer-content"><p>&copy; 2025 Wellness Gym. All rights reserved.</p></div></footer>
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>(function(){if(isAdmin()){var r=document.getElementById('navRegister'),m=document.getElementById('navMembers');if(r)r.style.display='';if(m)m.style.display='';}})();</script>
+</body>
+</html>
