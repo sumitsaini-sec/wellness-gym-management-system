@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Wellness Gym</title>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('wellness_gym_theme') || 'dark');</script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body class="auth-page">
+    <script src="js/auth.js"></script>
+    <script>
+        if (typeof requireAuth === 'function') requireAuth();
+    </script>
+
+    <main>
+        <section class="auth-section">
+            <div class="auth-bg">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1600&q=80" alt="Bodybuilder">
+            </div>
+            <div class="auth-overlay"></div>
+            <div class="container auth-container">
+                <div class="auth-card">
+                    <h1>Wellness Gym</h1>
+                    <p class="auth-subtitle">Sign in to access gym features, diet plans, and your activity.</p>
+                    <form class="auth-form" id="loginForm" autocomplete="off">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" name="username" required placeholder="Enter username" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required placeholder="••••••••" autocomplete="off">
+                        </div>
+                        <div class="form-group form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('login-username').value;
+            var password = document.getElementById('login-password').value;
+            var result = login(username, password);
+            if (result.ok) {
+                if (typeof showNotification === 'function') showNotification('Login successful! Redirecting...', 'success');
+                setTimeout(function() { window.location.href = 'index.html'; }, 800);
+            } else {
+                if (typeof showNotification === 'function') showNotification(result.msg || 'Invalid credentials.', 'error');
+                else alert(result.msg || 'Invalid credentials.');
+            }
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
