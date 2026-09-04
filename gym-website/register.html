@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New Member | Wellness Gym</title>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('wellness_gym_theme') || 'dark');</script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <script src="js/auth.js"></script>
+    <script>requireAdmin();</script>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">WELLNESS GYM</a>
+            <div class="nav-right">
+                <button class="theme-toggle" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun">☀️</span><span class="theme-icon theme-icon-moon">🌙</span></button>
+                <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <ul class="nav-menu" id="navMenu"></ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="auth-bg">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&h=1080&fit=crop" alt="Gym">
+            </div>
+            <div class="auth-overlay"></div>
+            <div class="container auth-container">
+                <div class="auth-card">
+                    <h1>Register New Member</h1>
+                    <p class="auth-subtitle">Admin only — add new members to the gym.</p>
+                    <form class="auth-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-name">Full Name</label>
+                            <input type="text" id="reg-name" name="name" required placeholder="Member full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-username">Username (for login)</label>
+                            <input type="text" id="reg-username" name="username" required placeholder="Choose username">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" name="password" required placeholder="••••••••" minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" name="email" placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Phone</label>
+                            <input type="tel" id="reg-phone" name="phone" placeholder="+91 98765 43210">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Register Member</button>
+                    </form>
+                    <p class="auth-switch"><a href="members.html">View Members List</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content"><p>&copy; 2025 Wellness Gym.</p></div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        (function() {
+            var nav = document.getElementById('navMenu');
+            if (nav) {
+                var items = [
+                    { href: 'index.html', text: 'Home' },
+                    { href: 'about.html', text: 'About' },
+                    { href: 'diet-plans.html', text: 'Diet Plans' },
+                    { href: 'supplement-store.html', text: 'Supplements' },
+                    { href: 'gallery.html', text: 'Gallery' },
+                    { href: 'activity.html', text: 'Activity' },
+                    { href: 'register.html', text: 'Register Member', admin: true },
+                    { href: 'members.html', text: 'Members', admin: true },
+                    { href: '#', text: 'Logout', logout: true }
+                ];
+                var auth = typeof getAuth === 'function' ? getAuth() : null;
+                var isAdmin = auth && auth.role === 'admin';
+                nav.innerHTML = items.filter(function(i) { return !i.admin || isAdmin; }).map(function(i) {
+                    if (i.logout) return '<li><a href="#" onclick="logout(); return false;">Logout</a></li>';
+                    return '<li><a href="' + i.href + '">' + i.text + '</a></li>';
+                }).join('');
+            }
+        })();
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('reg-username').value.trim();
+            var password = document.getElementById('reg-password').value.trim();
+            if (password.length < 6) {
+                showNotification('Password must be at least 6 characters.', 'error');
+                return;
+            }
+            var members = getMembers();
+            if (members.some(function(m) { return (m.username || '').trim().toLowerCase() === username.toLowerCase(); })) {
+                showNotification('Username already exists.', 'error');
+                return;
+            }
+            var nowIso = new Date().toISOString();
+            members.push({
+                id: 'M-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7),
+                name: document.getElementById('reg-name').value.trim(),
+                username: username,
+                password: password,
+                email: (document.getElementById('reg-email').value || '').trim(),
+                phone: (document.getElementById('reg-phone').value || '').trim(),
+                registeredAt: nowIso,
+                attendanceLog: [],
+                bills: [],
+                assignedPackage: null
+            });
+            saveMembers(members);
+            showNotification('Member registered successfully!', 'success');
+            document.getElementById('registerForm').reset();
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
