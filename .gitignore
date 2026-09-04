@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.template
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs / build output
+*.log
+npm-debug.log*
+coverage/
+dist/
+build/
+
+# Temporary / backup files
+*.tmp
+*.temp
+*.bak
+*~
